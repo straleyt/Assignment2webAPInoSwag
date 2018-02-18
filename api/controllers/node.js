@@ -20,13 +20,3 @@ module.exports = {
 
 
 
-function put(req,res){
-  var myHeaders = req.headers;
-  //If no headers or body say so
-  if(Object.keys(req.headers).length === 0){
-      myHeaders = "No headers sent in";
-  } else {
-    console.log(myHeaders);
-    res.json({message:'using puts', headers: myHeaders});
-  };
-}
