@@ -1,5 +1,5 @@
 //file: server.js
-
+'use strict';
 //node_modules required.
 //Packages should be a dependency in the package.json 
 var express = require('express');
@@ -22,11 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
-'use strict';
-
-var app = require('express')();
-module.exports = app; // for testing
-
+//Since all routes give back same response we can function it
 function responseFunction(method, req, res){
   var myHeaders = req.headers;
   var myParams = req.params;
@@ -35,7 +31,7 @@ function responseFunction(method, req, res){
   opts.secretOrKey = process.env.UNIQUE_KEY;
   var myUniqueKey = opts.secretOrKey;
 
-  //If no headers or body say so
+  //If no headers or body say so in response
   if (Object.keys(req.headers).length === 0 && Object.keys(req.params).length === 0) {
     myHeaders = "No headers sent in";
     myParams = "No parameters sent in";
@@ -71,7 +67,6 @@ app.get('/gets', function (req, res) {
 // app.use('*', function(req, res, next) {
 //   console.log("Invalid route supplied")
 //   res.statusCode = 405;
-  
 // });
 
 
