@@ -43,15 +43,16 @@ app.put('/puts', function (req, res) {
 });
 
 app.delete('/deletes', function (req, res) {
-  var reqUsername = req.body.username;
-  var reqPassword = req.body.password;
+  var encoded = req.header("Authorization");
+  var decoded = Buffer.from(encoded.split(' ')[1],'base64').toString();
+  var reqUsername = decoded.split(':')[0];
+  var reqPassword = decoded.split(':')[1];
 
   if(reqUsername == username && reqPassword == password){
     responseFunction('deletes', req, res);  
   } else{
     res.status(401).send("Invalid username and/or password.")
   }
-
 });
 
 app.post('/posts', function (req, res) {
@@ -63,7 +64,7 @@ app.get('/gets', function (req, res) {
 });
 
 app.use('*', function(req, res, next) {
-  res.status(405).send("Invalid route supplied.")
+  res.status(405).send("Unsupported method or invalid path.")
 });
 
 
