@@ -1,2 +1,3 @@
 # Assignment2WebAPI
-assignment 2 (also deployed on Heroku) for Web API class
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/8647bcc9bff640127ed8)
