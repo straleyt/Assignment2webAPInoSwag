@@ -1,4 +1,5 @@
 //file: server.js
+//creator: Tegan Straley
 'use strict';
 //node_modules required.
 //Packages should be a dependency in the package.json 
@@ -6,27 +7,16 @@ var express = require('express');
 var http = require('http');
 var url = require('url');
 var bodyParser = require('body-parser');
-var authController = require('./auth');
-var authJwtController = require('./auth_jwt');
-var passport = require('passport');
-var jwt = require('jsonwebtoken');
-var passport = require('passport');
-var JwtStrategy = require('passport-jwt').Strategy;
-var ExtractJwt = require('passport-jwt').ExtractJwt;
-var dotenv = require('dotenv').config();
+var dotenv = require('dotenv').config(); //Needed for process.env.UNIQUE_KEY
 var port = 8080;
+//Hardcoded Basic Authentication
 var username = "tegan";
 var password = "123";
-
-// get req.query
-// post req. body
-
 
 //Creating the server
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
 
 //Since all routes give back same response we can function it
 function responseFunction(method, req, res){
@@ -43,8 +33,7 @@ function responseFunction(method, req, res){
   } else if (Object.keys(req.params).length === 0 && Object.keys(req.headers).length > 0){
     myParams = "No parameters sent in";
   } 
-
-  res.statusCode = 200;
+  res.status(200);
   res.json({ message: 'using ' + method, headers: myHeaders, parameters: myParams, uniqueKey: myUniqueKey});
 }
 
@@ -73,12 +62,9 @@ app.get('/gets', function (req, res) {
   responseFunction('gets', req, res);
 });
 
-
-
-// app.use('*', function(req, res, next) {
-//   console.log("Invalid route supplied")
-//   res.statusCode = 405;
-// });
+app.use('*', function(req, res, next) {
+  res.status(405).send("Invalid route supplied.")
+});
 
 
 var port = process.env.PORT || 8080;
