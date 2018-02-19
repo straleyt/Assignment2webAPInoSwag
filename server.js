@@ -21,16 +21,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //Since all routes give back same response we can function it
 function responseFunction(method, req, res){
   var myHeaders = req.headers;
-  var myParams = req.params;
+  var myParams = req.body;
   var myUniqueKey = process.env.UNIQUE_KEY;
 
   //If no headers or body say so in response
-  if (Object.keys(req.headers).length === 0 && Object.keys(req.params).length === 0) {
+  if (Object.keys(req.headers).length === 0 && Object.keys(req.body).length === 0) {
     myHeaders = "No headers sent in";
     myParams = "No parameters sent in";
-  }else if (Object.keys(req.headers).length === 0 && Object.keys(req.params).length > 0){
+  }else if (Object.keys(req.headers).length === 0 && Object.keys(req.body).length > 0){
     myHeaders = "No headers sent in";
-  } else if (Object.keys(req.params).length === 0 && Object.keys(req.headers).length > 0){
+  } else if (Object.keys(req.body).length === 0 && Object.keys(req.headers).length > 0){
     myParams = "No parameters sent in";
   } 
   res.status(200);
@@ -71,4 +71,3 @@ app.use('*', function(req, res, next) {
 var port = process.env.PORT || 8080;
 app.listen(port);
 console.log("Server listening on port " + port);
-
