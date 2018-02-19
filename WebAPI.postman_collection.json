@@ -1,0 +1,309 @@
+{
+	"info": {
+		"name": "WebAPI",
+		"_postman_id": "62dfee96-d0ea-cc40-afd5-642fe902627a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HW2",
+			"description": "",
+			"item": [
+				{
+					"name": "posts (correct)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/posts",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"posts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "deletes (correct)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "tegan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "tegan",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/deletes",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"deletes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "gets (correct)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/gets",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"gets"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "puts (correct)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/puts",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"puts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "puts (wrong)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/puts",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"puts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "deletes (wrong password)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "12",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "tegan",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/deletes",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"deletes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "deletes (wrong username)",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "teganstraley",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/deletes",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"deletes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "bad route (wrong)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "teganstraley",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://mysterious-earth-47469.herokuapp.com/badRoute",
+							"protocol": "https",
+							"host": [
+								"mysterious-earth-47469",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"badRoute"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
