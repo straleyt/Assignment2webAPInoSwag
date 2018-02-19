@@ -15,6 +15,12 @@ var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var dotenv = require('dotenv').config();
 var port = 8080;
+var username = "tegan";
+var password = "123";
+
+// get req.query
+// post req. body
+
 
 //Creating the server
 var app = express();
@@ -26,10 +32,7 @@ app.use(passport.initialize());
 function responseFunction(method, req, res){
   var myHeaders = req.headers;
   var myParams = req.params;
-  var opts = {};
-  opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
-  opts.secretOrKey = process.env.UNIQUE_KEY;
-  var myUniqueKey = opts.secretOrKey;
+  var myUniqueKey = process.env.UNIQUE_KEY;
 
   //If no headers or body say so in response
   if (Object.keys(req.headers).length === 0 && Object.keys(req.params).length === 0) {
@@ -51,7 +54,15 @@ app.put('/puts', function (req, res) {
 });
 
 app.delete('/deletes', function (req, res) {
-  responseFunction('deletes', req, res);
+  var reqUsername = req.body.username;
+  var reqPassword = req.body.password;
+
+  if(reqUsername == username && reqPassword == password){
+    responseFunction('deletes', req, res);  
+  } else{
+    res.status(401).send("Invalid username and/or password.")
+  }
+
 });
 
 app.post('/posts', function (req, res) {
