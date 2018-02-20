@@ -27,11 +27,11 @@ function responseFunction(method, req, res){
   //If no headers or body say so in response
   if (Object.keys(req.headers).length === 0 && Object.keys(req.body).length === 0) {
     myHeaders = "No headers sent in";
-    myParams = "No parameters sent in";
+    myParams = "No body sent in";
   }else if (Object.keys(req.headers).length === 0 && Object.keys(req.body).length > 0){
     myHeaders = "No headers sent in";
   } else if (Object.keys(req.body).length === 0 && Object.keys(req.headers).length > 0){
-    myParams = "No parameters sent in";
+    myParams = "No body sent in";
   } 
   res.status(200);
   res.json({ message: 'using ' + method, headers: myHeaders, parameters: myParams, uniqueKey: myUniqueKey});
@@ -51,7 +51,7 @@ app.delete('/deletes', function (req, res) {
   if(reqUsername == username && reqPassword == password){
     responseFunction('deletes', req, res);  
   } else{
-    res.status(401).send("Invalid username and/or password.")
+    res.status(401).send({message:"Invalid username and/or password."});
   }
 });
 
@@ -64,7 +64,7 @@ app.get('/gets', function (req, res) {
 });
 
 app.use('*', function(req, res, next) {
-  res.status(405).send("Unsupported method or invalid path.")
+  res.status(405).send({message:"Unsupported method or invalid path."});
 });
 
 
