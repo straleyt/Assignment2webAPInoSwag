@@ -12,6 +12,26 @@
 			"item": [
 				{
 					"name": "posts (correct)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "822f2a01-c98b-441a-83f1-059dbbdc6551",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"'No body sent in' is displayed\", function () {",
+									"    pm.variables.get(\"parameters\") == \"No body sent in\";",
+									"});",
+									"",
+									""
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -42,6 +62,24 @@
 				},
 				{
 					"name": "deletes (correct)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "66740fc5-4d33-4cde-9819-0abf64c1a9e7",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"'body' == bodyValue\", function () {",
+									"    pm.variables.get(\"body\") == \"bodyValue\";",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -69,14 +107,8 @@
 							"mode": "urlencoded",
 							"urlencoded": [
 								{
-									"key": "username",
-									"value": "tegan",
-									"description": "",
-									"type": "text"
-								},
-								{
-									"key": "password",
-									"value": "123",
+									"key": "body",
+									"value": "bodyValue",
 									"description": "",
 									"type": "text"
 								}
@@ -100,6 +132,20 @@
 				},
 				{
 					"name": "gets (correct)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "16a70d6e-d9a3-4db2-beac-3a50130dd744",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -125,6 +171,20 @@
 				},
 				{
 					"name": "puts (correct)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73674974-49b4-4184-8020-7039b6c30fef",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -150,6 +210,20 @@
 				},
 				{
 					"name": "puts (wrong)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c07c58ef-5943-46ad-8ee2-ac18fe03e5be",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {",
+									"    pm.response.to.have.status(405);",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -175,6 +249,20 @@
 				},
 				{
 					"name": "deletes (wrong password)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2ee14082-be5a-4b8a-8ae7-ea6ca31107ca",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -217,6 +305,20 @@
 				},
 				{
 					"name": "deletes (wrong username)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6494e894-3c59-4b18-9de9-066d4299f872",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "basic",
@@ -259,6 +361,20 @@
 				},
 				{
 					"name": "bad route (wrong)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "80bc37d0-6ddd-4f2e-a4e0-52f1995501fd",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Status code is 405\", function () {",
+									"    pm.response.to.have.status(405);",
+									"});"
+								]
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
